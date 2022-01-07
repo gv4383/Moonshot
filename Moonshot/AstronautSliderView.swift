@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AstronautSliderView: View {
-    let crew: [MissionView.CrewMember]
+    let crew: [Mission.CrewMember]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -43,7 +43,7 @@ struct AstronautSliderView: View {
         }
     }
     
-    init(crew: [MissionView.CrewMember]) {
+    init(crew: [Mission.CrewMember]) {
         self.crew = crew
     }
 }
@@ -51,10 +51,10 @@ struct AstronautSliderView: View {
 struct AstronautSliderView_Previews: PreviewProvider {
     static let missions: [Mission] = Bundle.main.decode("missions.json")
     static let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
-    static let crew: [MissionView.CrewMember] = missions[0].crew.map { member in
+    static let crew: [Mission.CrewMember] = missions[0].crew.map { member in
         let astronaut = astronauts[member.name]
         
-        return MissionView.CrewMember(role: member.role, astronaut: astronaut!)
+        return Mission.CrewMember(role: member.role, astronaut: astronaut!)
     }
     
     static var previews: some View {

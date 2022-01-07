@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct MissionView: View {
-    struct CrewMember {
-        let role: String
-        let astronaut: Astronaut
-    }
-    
     let mission: Mission
-    let crew: [CrewMember]
+    let crew: [Mission.CrewMember]
     
     var body: some View {
         GeometryReader { geometry in
@@ -62,7 +57,7 @@ struct MissionView: View {
         
         self.crew = mission.crew.map { member in
             if let astronaut = astronauts[member.name] {
-                return CrewMember(role: member.role, astronaut: astronaut)
+                return Mission.CrewMember(role: member.role, astronaut: astronaut)
             } else {
                 fatalError("Missing \(member.name)")
             }
